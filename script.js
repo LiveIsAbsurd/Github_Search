@@ -20,7 +20,7 @@ searchPlace.addEventListener('input', (e) => {
         getPost(searchText);
     }
 
-    if (searchText == '') {
+    if (searchText == '' || searchText == ' ') {
         clearTimeout(timeId);
         clearResilt()
     }
