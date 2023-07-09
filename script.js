@@ -64,7 +64,7 @@ function createResult(posts) {
         newPost.classList.add('result-container_result');
         autoComplite.appendChild(newPost);
         resultContainer.appendChild(autoComplite);
-        newPost.addEventListener('click', (e) => {
+        newPost.addEventListener('click', () => {
             listAdd(post.name, post.owner.login, post.stargazers_count);
             clearResilt();
         });
