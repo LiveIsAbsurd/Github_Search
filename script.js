@@ -65,7 +65,7 @@ function createResult(posts) {
         autoComplite.appendChild(newPost);
         resultContainer.appendChild(autoComplite);
         newPost.addEventListener('click', (e) => {
-            listAdd(post.name, post.owner.login, post.watchers_count);
+            listAdd(post.name, post.owner.login, post.stargazers_count);
             clearResilt();
         });
     });
