@@ -20,7 +20,7 @@ searchPlace.addEventListener('input', (e) => {
         getPost(searchText);
     }
 
-    if (searchText == '' || searchText == ' ') {
+    if (searchText == '' || searchText.trim() == '') {
         clearTimeout(timeId);
         clearResilt()
     }
@@ -37,7 +37,8 @@ function getPost(searchText) {
         let request = fetch(`https://api.github.com/search/repositories?q=${searchText}&per_page=5`);
         request
         .then(response => response.json())
-        .then(createResult);
+        .then(createResult)
+        .catch(err => console.log(err));
     }, 500);
 
 }
@@ -55,6 +56,7 @@ function listAdd(name, owner, stars) {
     buttonDelete.addEventListener('click', () => {
         listContainer.removeChild(list);
     });
+    searchPlace.value = "";
 }
 
 function createResult(posts) {
@@ -74,10 +76,10 @@ function createResult(posts) {
 function clearResilt() {
     const result = resultContainer.querySelectorAll('.result-container_result');
 
-        if (result) {
-            for (child of result) {
-                resultContainer.removeChild(child);
-            }
-
+    if (result) {
+        for (child of result) {
+            resultContainer.removeChild(child);
         }
+
+    }
 }
